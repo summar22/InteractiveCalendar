@@ -126,21 +126,6 @@ The `InteractiveCalendar` component is built with:
 
 ## Key Implementations
 
-### Date Range Logic
-```typescript
-const handleDateClick = (date: Date) => {
-  if (!selectedRange.start || (selectedRange.start && selectedRange.end)) {
-    setSelectedRange({ start: date, end: null })
-  } else if (selectedRange.start && !selectedRange.end) {
-    if (date < selectedRange.start) {
-      setSelectedRange({ start: date, end: selectedRange.start })
-    } else {
-      setSelectedRange({ start: selectedRange.start, end: date })
-    }
-  }
-}
-```
-
 ### Responsive Design
 - Desktop: Side-by-side layout with hero image and calendar grid
 - Mobile: Stacked vertical layout with optimized touch targets
@@ -151,13 +136,6 @@ const handleDateClick = (date: Date) => {
 - Hover states on calendar dates
 - Smooth theme transitions
 - Note appearance animations
-
-## Deployment
-
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to [Vercel](https://vercel.com)
-3. Deploy automatically with zero configuration
 
 ### Other Platforms
 - **Netlify**: Connect GitHub repository and deploy
@@ -176,30 +154,12 @@ npm run build
 - Safari 14+
 - Edge 90+
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
 ## Performance Considerations
 
 - Images are optimized through Next.js Image component
 - Component uses React.memo for optimization
 - Efficient state management with minimal re-renders
 - CSS-in-JS approach with Tailwind for better performance
-
-## Future Enhancements
-
-- [ ] Drag and drop date selection
-- [ ] Recurring events
-- [ ] Export calendar to iCal format
-- [ ] More holiday data for different regions
-- [ ] Custom event categories and colors
-- [ ] Week and month view toggles
-- [ ] Search functionality for notes
 
 ## Personal Details
  - Name: Summar Porwal
