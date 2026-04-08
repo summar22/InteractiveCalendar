@@ -38,14 +38,14 @@ interface Holiday {
 const seasonalImages = [
   {
     month: 0, // January
-    image: 'https://images.unsplash.com/photo-1483664852095-d6cc68707d47?w=1200&h=600&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&h=600&fit=crop&auto=format',
     gradient: 'from-blue-900 via-purple-900 to-pink-900',
     accent: 'from-blue-400 to-purple-600',
     particles: 'snow'
   },
   {
     month: 1, // February
-    image: 'https://images.unsplash.com/photo-1519452575417-567c1a0162e6?w=1200&h=600&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1200&h=600&fit=crop&auto=format',
     gradient: 'from-pink-900 via-red-900 to-purple-900',
     accent: 'from-pink-400 to-red-600',
     particles: 'hearts'
@@ -66,7 +66,7 @@ const seasonalImages = [
   },
   {
     month: 4, // May
-    image: 'https://images.unsplash.com/photo-1540206395-688085023072?w=1200&h=600&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&h=600&fit=crop&auto=format',
     gradient: 'from-green-900 via-emerald-900 to-teal-900',
     accent: 'from-green-400 to-emerald-600',
     particles: 'leaves'
@@ -87,38 +87,40 @@ const seasonalImages = [
   },
   {
     month: 7, // August
-    image: 'https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=1200&h=600&fit=crop&auto=format',
-    gradient: 'from-indigo-900 via-purple-900 to-pink-900',
-    accent: 'from-indigo-400 to-purple-600',
-    particles: 'stars'
-  },
-  {
-    month: 8, // September
-    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&h=600&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&h=600&fit=crop&auto=format',
     gradient: 'from-orange-900 via-red-900 to-yellow-900',
     accent: 'from-orange-400 to-red-600',
     particles: 'leaves'
   },
   {
+    month: 8, // September
+
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop&auto=format',
+    gradient: 'from-blue-900 via-cyan-900 to-teal-900',
+    accent: 'from-blue-400 to-cyan-600',
+    particles: 'waves'
+  },
+  {
     month: 9, // October
-    image: 'https://images.unsplash.com/photo-1518684079-3c830dcef291?w=1200&h=600&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=1200&h=600&fit=crop&auto=format',
     gradient: 'from-orange-900 via-amber-900 to-yellow-900',
     accent: 'from-orange-400 to-amber-600',
     particles: 'pumpkin'
   },
   {
     month: 10, // November
-    image: 'https://images.unsplash.com/photo-1519922651849-5e29d4d47d51?w=1200&h=600&fit=crop&auto=format',
-    gradient: 'from-gray-900 via-slate-900 to-zinc-900',
-    accent: 'from-gray-400 to-slate-600',
-    particles: 'snow'
+    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&h=600&fit=crop&auto=format',
+    gradient: 'from-pink-900 via-purple-900 to-indigo-900',
+    accent: 'from-pink-400 to-purple-600',
+    particles: 'petals'
+
   },
   {
     month: 11, // December
-    image: 'https://images.unsplash.com/photo-1516992630524-2e6e17554311?w=1200&h=600&fit=crop&auto=format',
-    gradient: 'from-red-900 via-green-900 to-red-900',
-    accent: 'from-red-400 to-green-600',
-    particles: 'snowflakes'
+    image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&h=600&fit=crop&auto=format',
+    gradient: 'from-green-900 via-emerald-900 to-teal-900',
+    accent: 'from-green-400 to-emerald-600',
+    particles: 'leaves'
   }
 ]
 
@@ -194,12 +196,12 @@ export default function StunningCalendar() {
     if (savedEvents) {
       setEvents(JSON.parse(savedEvents))
     }
-    
+
     const savedNotes = localStorage.getItem('stunning-calendar-notes')
     if (savedNotes) {
       setNotes(JSON.parse(savedNotes))
     }
-    
+
     const savedTheme = localStorage.getItem('stunning-calendar-theme')
     if (savedTheme === 'dark') {
       setIsDarkMode(true)
@@ -256,8 +258,8 @@ export default function StunningCalendar() {
       const dateStr = format(selectedDate, 'yyyy-MM-dd')
       return notes.filter(note => note.date === dateStr && note.type === 'date')
     } else if (noteType === 'range' && selectedRange.start && selectedRange.end) {
-      return notes.filter(note => 
-        note.type === 'range' && 
+      return notes.filter(note =>
+        note.type === 'range' &&
         note.dateRange &&
         note.dateRange.start === format(selectedRange.start!, 'yyyy-MM-dd') &&
         note.dateRange.end === format(selectedRange.end!, 'yyyy-MM-dd')
@@ -317,7 +319,7 @@ export default function StunningCalendar() {
   }
 
   const updateEvent = (updatedEvent: Event) => {
-    setEvents(events.map(event => 
+    setEvents(events.map(event =>
       event.id === updatedEvent.id ? updatedEvent : event
     ))
     setShowEventModal(false)
@@ -331,7 +333,7 @@ export default function StunningCalendar() {
 
   const isStartOrEnd = (date: Date) => {
     return (selectedRange.start && isSameDay(date, selectedRange.start)) ||
-           (selectedRange.end && isSameDay(date, selectedRange.end))
+      (selectedRange.end && isSameDay(date, selectedRange.end))
   }
 
   const monthStart = startOfMonth(currentDate)
@@ -393,7 +395,7 @@ export default function StunningCalendar() {
       {/* Animated Background */}
       <div className={`absolute inset-0 bg-gradient-to-br ${currentSeason.gradient}`} />
       <ParticleEffect />
-      
+
       {/* Glass Container */}
       <div className="relative min-h-screen backdrop-blur-xl">
         {/* Hero Section with Seasonal Image */}
@@ -411,7 +413,7 @@ export default function StunningCalendar() {
             />
             <div className={`absolute inset-0 bg-gradient-to-t ${currentSeason.gradient} opacity-70`} />
           </div>
-          
+
           <div className="relative z-10 h-full flex flex-col justify-between p-8">
             <div className="flex justify-between items-start">
               <div className="text-white">
@@ -432,7 +434,7 @@ export default function StunningCalendar() {
                   {currentTime && format(currentTime, 'EEEE, MMMM d, yyyy')}
                 </motion.p>
               </div>
-              
+
               <motion.button
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -445,7 +447,7 @@ export default function StunningCalendar() {
                 {isDarkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
               </motion.button>
             </div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -618,12 +620,12 @@ export default function StunningCalendar() {
                       {day}
                     </div>
                   ))}
-                  
+
                   {/* Empty Days */}
                   {emptyDays.map((_, index) => (
                     <div key={`empty-${index}`} className="aspect-square" />
                   ))}
-                  
+
                   {/* Calendar Days */}
                   {monthDays.map((day, index) => {
                     const dayEvents = getEventsForDate(day)
@@ -658,14 +660,14 @@ export default function StunningCalendar() {
                         <div className="text-sm font-bold mb-1">
                           {format(day, 'd')}
                         </div>
-                        
+
                         {/* Holiday Indicator */}
                         {holiday && (
                           <div className={`absolute top-1 right-1 ${holiday.color}`}>
                             {holiday.icon}
                           </div>
                         )}
-                        
+
                         {/* Events */}
                         <div className="space-y-1">
                           {dayEvents.slice(0, 2).map((event, i) => (
@@ -740,16 +742,15 @@ export default function StunningCalendar() {
                 >
                   <div className="mb-4">
                     <h3 className="text-xl font-bold text-white mb-3">Notes</h3>
-                    
+
                     {/* Note Type Selector */}
                     <div className="flex space-x-2 mb-4">
                       <button
                         onClick={() => setNoteType('general')}
-                        className={`px-3 py-1 rounded-lg text-sm transition-colors ${
-                          noteType === 'general' 
-                            ? 'bg-white/30 text-white' 
-                            : 'bg-white/10 text-white/70 hover:bg-white/20'
-                        }`}
+                        className={`px-3 py-1 rounded-lg text-sm transition-colors ${noteType === 'general'
+                          ? 'bg-white/30 text-white'
+                          : 'bg-white/10 text-white/70 hover:bg-white/20'
+                          }`}
                         suppressHydrationWarning
                       >
                         General
@@ -757,13 +758,12 @@ export default function StunningCalendar() {
                       <button
                         onClick={() => setNoteType('date')}
                         disabled={!selectedDate}
-                        className={`px-3 py-1 rounded-lg text-sm transition-colors ${
-                          noteType === 'date' 
-                            ? 'bg-white/30 text-white' 
-                            : selectedDate
-                              ? 'bg-white/10 text-white/70 hover:bg-white/20'
-                              : 'bg-white/5 text-white/30 cursor-not-allowed'
-                        }`}
+                        className={`px-3 py-1 rounded-lg text-sm transition-colors ${noteType === 'date'
+                          ? 'bg-white/30 text-white'
+                          : selectedDate
+                            ? 'bg-white/10 text-white/70 hover:bg-white/20'
+                            : 'bg-white/5 text-white/30 cursor-not-allowed'
+                          }`}
                       >
                         Date Notes
                         {selectedDate && (
@@ -775,13 +775,12 @@ export default function StunningCalendar() {
                       <button
                         onClick={() => setNoteType('range')}
                         disabled={!selectedRange.start || !selectedRange.end}
-                        className={`px-3 py-1 rounded-lg text-sm transition-colors ${
-                          noteType === 'range' 
-                            ? 'bg-white/30 text-white' 
-                            : selectedRange.start && selectedRange.end
-                              ? 'bg-white/10 text-white/70 hover:bg-white/20'
-                              : 'bg-white/5 text-white/30 cursor-not-allowed'
-                        }`}
+                        className={`px-3 py-1 rounded-lg text-sm transition-colors ${noteType === 'range'
+                          ? 'bg-white/30 text-white'
+                          : selectedRange.start && selectedRange.end
+                            ? 'bg-white/10 text-white/70 hover:bg-white/20'
+                            : 'bg-white/5 text-white/30 cursor-not-allowed'
+                          }`}
                       >
                         Range Notes
                         {selectedRange.start && selectedRange.end && (
@@ -801,8 +800,8 @@ export default function StunningCalendar() {
                         onKeyPress={(e) => e.key === 'Enter' && addNote()}
                         placeholder={
                           noteType === 'general' ? "Add a general note..." :
-                          noteType === 'date' ? "Add a note for this date..." :
-                          "Add a note for this date range..."
+                            noteType === 'date' ? "Add a note for this date..." :
+                              "Add a note for this date range..."
                         }
                         className="flex-1 px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
                         suppressHydrationWarning
@@ -837,8 +836,8 @@ export default function StunningCalendar() {
                             </div>
                             <div className="text-xs text-white/50 mt-1">
                               {note.type === 'general' ? 'General note' :
-                               note.type === 'date' ? `Date: ${note.date}` :
-                               `Range: ${note.dateRange?.start} - ${note.dateRange?.end}`}
+                                note.type === 'date' ? `Date: ${note.date}` :
+                                  `Range: ${note.dateRange?.start} - ${note.dateRange?.end}`}
                             </div>
                           </motion.div>
                         ))
@@ -846,8 +845,8 @@ export default function StunningCalendar() {
                         <div className="text-center py-8 text-white/50">
                           <p className="text-sm">
                             {noteType === 'general' ? "No general notes yet. Add one above!" :
-                             noteType === 'date' ? "No notes for this date yet. Select a date and add a note!" :
-                             "No notes for this date range. Select a range and add a note!"}
+                              noteType === 'date' ? "No notes for this date yet. Select a date and add a note!" :
+                                "No notes for this date range. Select a range and add a note!"}
                           </p>
                         </div>
                       )}
@@ -902,9 +901,9 @@ export default function StunningCalendar() {
                     <input
                       type="text"
                       value={editingEvent ? editingEvent.title : newEvent.title}
-                      onChange={(e) => editingEvent 
-                        ? setEditingEvent({...editingEvent, title: e.target.value})
-                        : setNewEvent({...newEvent, title: e.target.value})
+                      onChange={(e) => editingEvent
+                        ? setEditingEvent({ ...editingEvent, title: e.target.value })
+                        : setNewEvent({ ...newEvent, title: e.target.value })
                       }
                       className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
                       placeholder="Event title"
@@ -918,8 +917,8 @@ export default function StunningCalendar() {
                     <textarea
                       value={editingEvent ? editingEvent.description : newEvent.description}
                       onChange={(e) => editingEvent
-                        ? setEditingEvent({...editingEvent, description: e.target.value})
-                        : setNewEvent({...newEvent, description: e.target.value})}
+                        ? setEditingEvent({ ...editingEvent, description: e.target.value })
+                        : setNewEvent({ ...newEvent, description: e.target.value })}
                       className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
                       placeholder="Event description"
                       rows={3}
@@ -935,8 +934,8 @@ export default function StunningCalendar() {
                         type="date"
                         value={editingEvent ? editingEvent.date : (selectedDate ? format(selectedDate, 'yyyy-MM-dd') : newEvent.date)}
                         onChange={(e) => editingEvent
-                          ? setEditingEvent({...editingEvent, date: e.target.value})
-                          : setNewEvent({...newEvent, date: e.target.value})}
+                          ? setEditingEvent({ ...editingEvent, date: e.target.value })
+                          : setNewEvent({ ...newEvent, date: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                       />
                     </div>
@@ -947,8 +946,8 @@ export default function StunningCalendar() {
                       <select
                         value={editingEvent ? editingEvent.category : newEvent.category}
                         onChange={(e) => editingEvent
-                          ? setEditingEvent({...editingEvent, category: e.target.value as Event['category'], color: categoryColors[e.target.value as Event['category']]})
-                          : setNewEvent({...newEvent, category: e.target.value as Event['category'], color: categoryColors[e.target.value as Event['category']]})}
+                          ? setEditingEvent({ ...editingEvent, category: e.target.value as Event['category'], color: categoryColors[e.target.value as Event['category']] })
+                          : setNewEvent({ ...newEvent, category: e.target.value as Event['category'], color: categoryColors[e.target.value as Event['category']] })}
                         className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                       >
                         <option value="work">Work</option>
@@ -969,8 +968,8 @@ export default function StunningCalendar() {
                         type="time"
                         value={editingEvent ? editingEvent.startTime : newEvent.startTime}
                         onChange={(e) => editingEvent
-                          ? setEditingEvent({...editingEvent, startTime: e.target.value})
-                          : setNewEvent({...newEvent, startTime: e.target.value})}
+                          ? setEditingEvent({ ...editingEvent, startTime: e.target.value })
+                          : setNewEvent({ ...newEvent, startTime: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                       />
                     </div>
@@ -982,8 +981,8 @@ export default function StunningCalendar() {
                         type="time"
                         value={editingEvent ? editingEvent.endTime : newEvent.endTime}
                         onChange={(e) => editingEvent
-                          ? setEditingEvent({...editingEvent, endTime: e.target.value})
-                          : setNewEvent({...newEvent, endTime: e.target.value})}
+                          ? setEditingEvent({ ...editingEvent, endTime: e.target.value })
+                          : setNewEvent({ ...newEvent, endTime: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                       />
                     </div>
@@ -996,8 +995,8 @@ export default function StunningCalendar() {
                     <select
                       value={editingEvent ? editingEvent.priority : newEvent.priority}
                       onChange={(e) => editingEvent
-                        ? setEditingEvent({...editingEvent, priority: e.target.value as Event['priority']})
-                        : setNewEvent({...newEvent, priority: e.target.value as Event['priority']})}
+                        ? setEditingEvent({ ...editingEvent, priority: e.target.value as Event['priority'] })
+                        : setNewEvent({ ...newEvent, priority: e.target.value as Event['priority'] })}
                       className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                     >
                       <option value="low">Low</option>
@@ -1015,8 +1014,8 @@ export default function StunningCalendar() {
                       type="text"
                       value={editingEvent ? editingEvent.location || '' : newEvent.location}
                       onChange={(e) => editingEvent
-                        ? setEditingEvent({...editingEvent, location: e.target.value})
-                        : setNewEvent({...newEvent, location: e.target.value})}
+                        ? setEditingEvent({ ...editingEvent, location: e.target.value })
+                        : setNewEvent({ ...newEvent, location: e.target.value })}
                       className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
                       placeholder="Event location"
                     />
