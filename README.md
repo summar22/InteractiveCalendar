@@ -180,9 +180,10 @@ npm run build
 - [ ] Week and month view toggles
 - [ ] Search functionality for notes
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+## Personal Details
+ - Name: Summar Porwal
+ - Email: summarporwal22@gmail.com
+ - Contact: 7974866054
 
 ---
 

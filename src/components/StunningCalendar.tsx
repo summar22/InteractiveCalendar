@@ -177,8 +177,17 @@ export default function StunningCalendar() {
     location: ''
   })
 
+  const [mounted, setMounted] = useState(false)
+  const [currentTime, setCurrentTime] = useState<Date | null>(null)
+
+  useEffect(() => {
+    setMounted(true)
+    setCurrentTime(new Date())
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000)
+    return () => clearInterval(timer)
+  }, [])
+
   const currentSeason = seasonalImages[currentDate.getMonth()]
-  const currentTime = new Date()
 
   useEffect(() => {
     const savedEvents = localStorage.getItem('stunning-calendar-events')
@@ -371,8 +380,16 @@ export default function StunningCalendar() {
     )
   }
 
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-white text-xl animate-pulse">Loading Stunning Calendar...</div>
+      </div>
+    )
+  }
+
   return (
-    <div className={`min-h-screen relative overflow-hidden ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen relative overflow-hidden ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`} suppressHydrationWarning>
       {/* Animated Background */}
       <div className={`absolute inset-0 bg-gradient-to-br ${currentSeason.gradient}`} />
       <ParticleEffect />
@@ -412,7 +429,7 @@ export default function StunningCalendar() {
                   transition={{ delay: 0.3 }}
                   className="text-xl opacity-90 drop-shadow-lg"
                 >
-                  {format(currentTime, 'EEEE, MMMM d, yyyy')}
+                  {currentTime && format(currentTime, 'EEEE, MMMM d, yyyy')}
                 </motion.p>
               </div>
               
@@ -733,6 +750,7 @@ export default function StunningCalendar() {
                             ? 'bg-white/30 text-white' 
                             : 'bg-white/10 text-white/70 hover:bg-white/20'
                         }`}
+                        suppressHydrationWarning
                       >
                         General
                       </button>
@@ -787,6 +805,7 @@ export default function StunningCalendar() {
                           "Add a note for this date range..."
                         }
                         className="flex-1 px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        suppressHydrationWarning
                       />
                       <button
                         onClick={addNote}
