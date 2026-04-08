@@ -29,6 +29,27 @@ A sophisticated, fully-featured calendar component built with Next.js, TypeScrip
 
 ## Getting Started
 
+## Project Demo
+
+🎥 **YouTube Demo**: https://youtu.be/fgSRhT-WC_o  
+
+### Front Page
+![frontpage](demo/image1.png)
+
+### Different Months View
+![differentmonths](demo/image6.png)
+
+### Create Event
+![createevent](demo/image3.png)
+
+### Date Range Selection
+![date range](demo/image4.png)
+
+### Notes Feature
+![notes](demo/image5.png)
+
+
+
 ### Prerequisites
 - Node.js 18+ 
 - npm, yarn, pnpm, or bun
